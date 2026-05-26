@@ -57,6 +57,7 @@
             pointer-events: none; z-index: 0;
         }
 
+        /* ── HEADER ── */
         .header {
             position: sticky; top: 0; z-index: 100;
             background: rgba(10,14,39,0.8);
@@ -64,14 +65,11 @@
             border-bottom: 1px solid var(--border);
             padding: 1rem 2rem;
         }
-
         .header-content {
             max-width: 1800px; margin: 0 auto;
             display: flex; justify-content: space-between; align-items: center;
         }
-
         .brand { display: flex; align-items: center; gap: 1rem; }
-
         .brand-icon {
             width: 40px; height: 40px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -80,7 +78,6 @@
             box-shadow: var(--shadow-glow);
         }
         .brand-icon svg { width: 24px; height: 24px; fill: white; }
-
         .brand-text { display: flex; flex-direction: column; }
         .brand-name {
             font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em;
@@ -91,9 +88,7 @@
             font-size: 0.75rem; color: var(--text-muted); font-weight: 500;
             letter-spacing: 0.05em; text-transform: uppercase;
         }
-
         .user-section { display: flex; align-items: center; gap: 1.5rem; }
-
         .progress-ring { position: relative; width: 48px; height: 48px; }
         .progress-ring-bg { fill: none; stroke: var(--bg-elevated); stroke-width: 3; }
         .progress-ring-fill {
@@ -105,7 +100,6 @@
             position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
             font-size: 0.75rem; font-weight: 700; font-family: 'Fira Code', monospace;
         }
-
         .user-info {
             display: flex; align-items: center; gap: 0.75rem;
             padding: 0.5rem 1rem;
@@ -113,7 +107,6 @@
             transition: all var(--transition-normal);
         }
         .user-info:hover { border-color: var(--primary); box-shadow: var(--shadow-glow); }
-
         .user-avatar {
             width: 36px; height: 36px; border-radius: 50%;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -121,7 +114,6 @@
             font-weight: 700; font-size: 0.875rem; color: white;
         }
         .user-name { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); }
-
         .logout-btn {
             padding: 0.5rem 1rem; background: var(--bg-elevated); border: 1px solid var(--border);
             border-radius: var(--radius-md); color: var(--text-secondary);
@@ -130,32 +122,30 @@
         }
         .logout-btn:hover { background: var(--danger); border-color: var(--danger); color: white; transform: translateY(-1px); }
 
+        /* ── LAYOUT ── */
         .main-container {
             max-width: 1800px; margin: 0 auto; padding: 2rem;
             display: grid; grid-template-columns: 380px 1fr;
             gap: 2rem; position: relative; z-index: 1;
         }
-
         .sidebar {
             height: calc(100vh - 120px); position: sticky; top: 100px;
             display: flex; flex-direction: column; gap: 1.5rem;
         }
 
+        /* ── SIDEBAR CARDS ── */
         .course-card {
             background: var(--bg-card); border: 1px solid var(--border);
             border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-md);
         }
-
         .course-header { margin-bottom: 1.5rem; }
         .course-title { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary); }
         .course-meta { display: flex; align-items: center; gap: 1rem; font-size: 0.75rem; color: var(--text-muted); }
         .course-meta-item { display: flex; align-items: center; gap: 0.375rem; }
-
         .progress-section { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light); }
         .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
         .progress-label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
         .progress-value { font-size: 0.875rem; font-weight: 700; font-family: 'Fira Code', monospace; color: var(--primary); }
-
         .progress-bar-wrapper { height: 8px; background: var(--bg-elevated); border-radius: 999px; overflow: hidden; }
         .progress-bar {
             height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary));
@@ -168,11 +158,11 @@
         }
         @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
+        /* ── LESSON LIST ── */
         .lessons-container { flex: 1; overflow-y: auto; padding-right: 0.5rem; }
         .lessons-container::-webkit-scrollbar { width: 6px; }
         .lessons-container::-webkit-scrollbar-track { background: var(--bg-elevated); border-radius: 999px; }
         .lessons-container::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 999px; }
-
         .lesson-card {
             background: var(--bg-elevated); border: 1px solid var(--border);
             border-radius: var(--radius-md); padding: 1rem; margin-bottom: 0.75rem;
@@ -188,9 +178,7 @@
         .lesson-card.active { background: var(--bg-card); border-color: var(--primary); box-shadow: var(--shadow-glow); }
         .lesson-card.active::before { background: linear-gradient(180deg, var(--primary), var(--secondary)); }
         .lesson-card.completed { border-color: var(--success); }
-
         .lesson-card-header { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.5rem; }
-
         .lesson-number {
             width: 36px; height: 36px; background: var(--bg-secondary);
             border-radius: var(--radius-sm);
@@ -200,11 +188,9 @@
         }
         .lesson-card.active .lesson-number { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; }
         .lesson-card.completed .lesson-number { background: var(--success); color: white; }
-
         .lesson-info { flex: 1; }
         .lesson-title { font-size: 0.9375rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; line-height: 1.4; }
         .lesson-meta { display: flex; align-items: center; gap: 0.75rem; font-size: 0.75rem; color: var(--text-muted); }
-
         .lesson-status-badge {
             margin-left: auto; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm);
             font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
@@ -212,8 +198,10 @@
         .lesson-status-badge.completed { background: rgba(16,185,129,0.1); color: var(--success); }
         .lesson-status-badge.current { background: rgba(0,217,255,0.1); color: var(--primary); }
 
+        /* ── CONTENT AREA ── */
         .content-area { display: flex; flex-direction: column; gap: 1.5rem; }
 
+        /* ── WELCOME SCREEN ── */
         .welcome-card {
             background: var(--bg-card); border: 1px solid var(--border);
             border-radius: var(--radius-lg); padding: 3rem; text-align: center; box-shadow: var(--shadow-md);
@@ -234,7 +222,6 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .welcome-description { font-size: 1.125rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.7; }
-
         .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; max-width: 700px; margin: 0 auto; }
         .stat-card {
             background: var(--bg-elevated); border: 1px solid var(--border);
@@ -249,9 +236,11 @@
         }
         .stat-label { font-size: 0.875rem; color: var(--text-muted); font-weight: 500; }
 
+        /* ── LESSON VIEW ── */
         .lesson-view { display: none; flex-direction: column; gap: 1.5rem; }
         .lesson-view.active { display: flex; }
 
+        /* ── VIDEO ── */
         .video-card {
             background: var(--bg-card); border: 1px solid var(--border);
             border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg);
@@ -266,7 +255,7 @@
         .video-placeholder svg { width: 80px; height: 80px; margin-bottom: 1rem; opacity: 0.3; }
         .video-placeholder-text { color: var(--text-muted); font-size: 0.875rem; }
 
-        /* ── PDF VIEWER ──────────────────────────────────────────────── */
+        /* ── PDF CARD ── */
         .pdf-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -275,6 +264,7 @@
             box-shadow: var(--shadow-md);
         }
 
+        /* Header row */
         .pdf-card-header {
             display: flex; align-items: center; justify-content: space-between;
             padding: 1rem 1.5rem;
@@ -282,9 +272,7 @@
             border-bottom: 1px solid var(--border);
             gap: 1rem; flex-wrap: wrap;
         }
-
         .pdf-header-left { display: flex; align-items: center; gap: 0.75rem; }
-
         .pdf-icon {
             width: 38px; height: 38px;
             background: linear-gradient(135deg, #EF4444, #B91C1C);
@@ -292,12 +280,33 @@
             display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
         .pdf-icon svg { width: 20px; height: 20px; }
-
         .pdf-header-title { font-size: 1rem; font-weight: 700; color: var(--text-primary); }
         .pdf-header-subtitle { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.125rem; }
+        .pdf-header-actions { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
 
-        .pdf-header-actions { display: flex; gap: 0.5rem; align-items: center; }
+        /* Tab switcher — shown when both PDFs exist */
+        .pdf-tab-bar {
+            display: none; /* shown by JS when ≥1 PDF exists */
+            align-items: center; gap: 0.375rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 0.25rem;
+        }
+        .pdf-tab {
+            padding: 0.375rem 0.875rem;
+            border-radius: calc(var(--radius-md) - 2px);
+            font-family: 'Outfit', sans-serif; font-size: 0.8125rem; font-weight: 600;
+            color: var(--text-muted); background: transparent; border: none;
+            cursor: pointer; transition: all var(--transition-fast); white-space: nowrap;
+        }
+        .pdf-tab.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white; box-shadow: 0 2px 8px rgba(0,217,255,0.25);
+        }
+        .pdf-tab:not(.active):hover { color: var(--text-primary); background: var(--bg-elevated); }
 
+        /* Open-in-new-tab link */
         .pdf-open-btn {
             padding: 0.5rem 1rem;
             background: var(--bg-card); border: 1px solid var(--border);
@@ -310,6 +319,7 @@
         .pdf-open-btn svg { width: 14px; height: 14px; }
         .pdf-open-btn:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
 
+        /* Show / Hide toggle */
         .pdf-toggle-btn {
             padding: 0.5rem 1.125rem;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -322,25 +332,24 @@
         .pdf-toggle-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,217,255,0.3); }
         .pdf-toggle-btn.open svg { transform: rotate(180deg); }
 
+        /* Viewer panel */
         .pdf-viewer-wrapper {
             overflow: hidden;
             transition: height 0.4s cubic-bezier(0.4,0,0.2,1);
             height: 0;
         }
         .pdf-viewer-wrapper.expanded { height: 720px; }
+        .pdf-viewer-wrapper iframe { width: 100%; height: 100%; border: none; display: block; }
 
-        .pdf-viewer-wrapper iframe {
-            width: 100%; height: 100%; border: none; display: block;
-        }
-
+        /* "No PDF" state */
         .pdf-no-content {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             height: 200px; gap: 1rem; color: var(--text-muted);
         }
         .pdf-no-content svg { width: 44px; height: 44px; opacity: 0.25; }
         .pdf-no-content p { font-size: 0.875rem; }
-        /* ─────────────────────────────────────────────────────────── */
 
+        /* ── LESSON DETAILS ── */
         .lesson-details-card {
             background: var(--bg-card); border: 1px solid var(--border);
             border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-md);
@@ -353,10 +362,8 @@
             border-radius: var(--radius-md); font-size: 0.875rem; color: var(--text-secondary);
         }
         .meta-tag svg { width: 16px; height: 16px; }
-
         .lesson-title-main { font-size: 1.75rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem; }
         .lesson-description-main { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; }
-
         .objectives-section { margin-bottom: 2rem; }
         .section-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
         .section-icon {
@@ -367,7 +374,6 @@
         }
         .section-icon svg { width: 14px; height: 14px; fill: white; }
         .section-title { font-size: 1.125rem; font-weight: 700; color: var(--text-primary); }
-
         .objectives-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
         .objectives-list li {
             padding: 1rem; background: var(--bg-elevated); border: 1px solid var(--border);
@@ -382,6 +388,7 @@
         .objective-icon svg { width: 12px; height: 12px; stroke: var(--primary); }
         .objective-text { color: var(--text-secondary); line-height: 1.6; }
 
+        /* ── ACTION BAR ── */
         .action-bar {
             background: var(--bg-card); border: 1px solid var(--border);
             border-radius: var(--radius-lg); padding: 1.5rem;
@@ -389,7 +396,6 @@
             box-shadow: var(--shadow-md);
         }
         .nav-controls { display: flex; gap: 0.75rem; }
-
         .btn {
             padding: 0.75rem 1.5rem; border-radius: var(--radius-md);
             font-family: 'Outfit', sans-serif; font-size: 0.875rem; font-weight: 600;
@@ -405,7 +411,6 @@
             color: white; box-shadow: 0 4px 12px rgba(0,217,255,0.3);
         }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,217,255,0.4); }
-
         .completion-toggle {
             display: flex; align-items: center; gap: 0.75rem;
             padding: 0.75rem 1.25rem; background: var(--bg-elevated); border: 1px solid var(--border);
@@ -415,6 +420,7 @@
         .completion-toggle input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; accent-color: var(--success); }
         .completion-toggle label { font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); cursor: pointer; }
 
+        /* ── RESPONSIVE ── */
         @media (max-width: 1200px) { .main-container { grid-template-columns: 320px 1fr; gap: 1.5rem; } }
         @media (max-width: 968px) {
             .main-container { grid-template-columns: 1fr; padding: 1rem; }
@@ -541,7 +547,7 @@
                     </div>
                 </div>
 
-                <!-- PDF Viewer (inline, below video) -->
+                <!-- ── PDF VIEWER (dual-PDF with tab switcher) ── -->
                 <div class="pdf-card">
                     <div class="pdf-card-header">
                         <div class="pdf-header-left">
@@ -559,7 +565,15 @@
                                 <div class="pdf-header-subtitle" id="pdf-subtitle">Select a lesson to load its PDF</div>
                             </div>
                         </div>
+
                         <div class="pdf-header-actions">
+                            <!-- Tab bar — toggled by JS -->
+                            <div class="pdf-tab-bar" id="pdf-tab-bar">
+                                <button class="pdf-tab active" id="pdf-tab-0" onclick="switchPdfTab(0)">📄 PDF 1</button>
+                                <button class="pdf-tab"        id="pdf-tab-1" onclick="switchPdfTab(1)">📄 PDF 2</button>
+                            </div>
+
+                            <!-- "Open in new tab" link — updates with active tab -->
                             <a id="pdf-open-link" href="#" target="_blank" class="pdf-open-btn" style="display:none;">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
@@ -568,6 +582,8 @@
                                 </svg>
                                 Open in new tab
                             </a>
+
+                            <!-- Show / Hide toggle -->
                             <button class="pdf-toggle-btn" id="pdf-toggle-btn" onclick="togglePdf()">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                     <polyline points="6 9 12 15 18 9"/>
@@ -576,8 +592,11 @@
                             </button>
                         </div>
                     </div>
+
+                    <!-- Viewer panel — content injected by JS -->
                     <div class="pdf-viewer-wrapper" id="pdf-viewer-wrapper"></div>
                 </div>
+                <!-- ── end PDF VIEWER ── -->
 
                 <!-- Lesson Details -->
                 <div class="lesson-details-card">
@@ -654,10 +673,22 @@
     </div>
 
     <script>
-        // ── LESSON DATA ────────────────────────────────────────────────────────
-        // For each lesson add a pdfUrl using the Google Drive preview format:
-        //   https://drive.google.com/file/d/YOUR_FILE_ID/preview
-        // Leave pdfUrl as "" if no PDF is ready yet.
+        // ══════════════════════════════════════════════════════════════════
+        //  LESSON DATA
+        //
+        //  Each lesson now supports TWO PDFs via the `pdfs` array:
+        //
+        //    pdfs: [
+        //      { label: "Slides",    url: "https://drive.google.com/file/d/FILE_ID/preview" },
+        //      { label: "Workbook",  url: "https://drive.google.com/file/d/FILE_ID/preview" }
+        //    ]
+        //
+        //  Rules:
+        //   • Use the /preview URL for the embedded iframe viewer.
+        //   • The "Open in new tab" button automatically converts /preview → /view.
+        //   • You can have 0, 1, or 2 entries. Tabs only appear when ≥ 2 entries exist.
+        //   • Leave pdfs: [] if no reading material is ready yet.
+        // ══════════════════════════════════════════════════════════════════
         const lessons = [
             {
                 id: 1,
@@ -665,8 +696,10 @@
                 description: "Learn the fundamentals of Security Operations Center, its role, and key responsibilities in cybersecurity.",
                 duration: "2h 15min",
                 videoUrl: "https://drive.google.com/file/d/1i3_yDo9c5CCMjX9yBfh_T46FNfjy3bF5/preview",
-                pdfUrl: "https://drive.google.com/file/d/1SfphgLKzEgg4WNaqupbizfV4ZwSAHdN5/view",   // ← paste your Google Drive PDF preview link here
-                pdfUrl: "https://drive.google.com/file/d/1tvEnfl66Zd7IaFLgOASlu5ge-yx6t-yf/view",
+                pdfs: [
+                    { label: "Lecture Slides",  url: "https://drive.google.com/file/d/1SfphgLKzEgg4WNaqupbizfV4ZwSAHdN5/preview" },
+                    { label: "Student Notes",   url: "https://drive.google.com/file/d/1tvEnfl66Zd7IaFLgOASlu5ge-yx6t-yf/preview" }
+                ],
                 objectives: [
                     "Understand what a SOC is and its importance",
                     "Learn about SOC roles and responsibilities",
@@ -680,7 +713,10 @@
                 description: "Explore common cyber threats, attack vectors, and the current threat landscape facing organizations.",
                 duration: "2h 30min",
                 videoUrl: "https://drive.google.com/file/d/1Q9MCn3yVZoUdMLWSK3mXIqoDPSCkZJz_/preview",
-                pdfUrl: "https://drive.google.com/file/d/1Q9MCn3yVZoUdMLWSK3mXIqoDPSCkZJz_/view",
+                pdfs: [
+                    { label: "Lecture Slides",  url: "https://drive.google.com/file/d/1Q9MCn3yVZoUdMLWSK3mXIqoDPSCkZJz_/preview" },
+                    { label: "Lab Guide",       url: "" }   // ← leave url empty until ready
+                ],
                 objectives: [
                     "Identify common cyber threats and attack types",
                     "Understand threat actors and their motivations",
@@ -694,7 +730,7 @@
                 description: "Master the basics of security monitoring, including tools, techniques, and best practices.",
                 duration: "3h 00min",
                 videoUrl: "https://drive.google.com/file/d/1DlZ3BqVR2ydsxIN_U0yzsJlWgj3DkGiA/preview",
-                pdfUrl: "",
+                pdfs: [],   // add up to 2 PDFs here when ready
                 objectives: [
                     "Learn security monitoring principles",
                     "Understand log management and analysis",
@@ -708,7 +744,7 @@
                 description: "Deep dive into cryptographic principles and their application in cybersecurity.",
                 duration: "2h 45min",
                 videoUrl: "https://drive.google.com/file/d/1I-oEIOmIzMQUKfqEG76e79LOuQf60tTB/preview",
-                pdfUrl: "",
+                pdfs: [],
                 objectives: [
                     "Understand encryption fundamentals",
                     "Learn about symmetric and asymmetric cryptography",
@@ -722,7 +758,7 @@
                 description: "Learn about the MITRE ATT&CK framework and the Cyber Kill Chain methodology.",
                 duration: "2h 30min",
                 videoUrl: "https://drive.google.com/file/d/1dn_fsW9U1hmPos2D3S60HtIVYb2MlEAC/preview",
-                pdfUrl: "",
+                pdfs: [],
                 objectives: [
                     "Master incident detection techniques",
                     "Learn triage methodologies",
@@ -736,7 +772,7 @@
                 description: "Hands-on labs covering phishing attacks and Distributed Denial of Service scenarios.",
                 duration: "3h 00min",
                 videoUrl: "https://drive.google.com/file/d/1K1jYsBPmkJWhGzs95uFfmgDrdf-f9mEP/preview",
-                pdfUrl: "",
+                pdfs: [],
                 objectives: [
                     "Analyze phishing attack patterns",
                     "Understand DDoS attack mechanisms",
@@ -750,7 +786,7 @@
                 description: "Deep dive into phishing attack analysis and detection techniques.",
                 duration: "2h 30min",
                 videoUrl: "https://drive.google.com/file/d/14d-Y2xaMxbqjL0qaWyv5Ir52kgGJlJOD/preview",
-                pdfUrl: "",
+                pdfs: [],
                 objectives: [
                     "Understand threat intelligence types",
                     "Learn intelligence gathering techniques",
@@ -764,7 +800,7 @@
                 description: "Master network-based security monitoring and traffic analysis techniques.",
                 duration: "3h 00min",
                 videoUrl: "",
-                pdfUrl: "",
+                pdfs: [],
                 objectives: [
                     "Learn network monitoring fundamentals",
                     "Understand packet analysis",
@@ -778,7 +814,7 @@
                 description: "Learn endpoint security monitoring and EDR tools for comprehensive threat detection.",
                 duration: "2h 40min",
                 videoUrl: "",
-                pdfUrl: "",
+                pdfs: [],
                 objectives: [
                     "Understand EDR capabilities",
                     "Learn endpoint threat detection",
@@ -792,7 +828,7 @@
                 description: "Discover how to automate SOC tasks and orchestrate security workflows using SOAR platforms.",
                 duration: "2h 30min",
                 videoUrl: "",
-                pdfUrl: "",
+                pdfs: [],
                 objectives: [
                     "Learn SOAR concepts and benefits",
                     "Understand automation use cases",
@@ -806,7 +842,7 @@
                 description: "Understand compliance requirements and effective security reporting for stakeholders.",
                 duration: "2h 15min",
                 videoUrl: "",
-                pdfUrl: "",
+                pdfs: [],
                 objectives: [
                     "Learn key compliance frameworks",
                     "Understand reporting requirements",
@@ -820,7 +856,7 @@
                 description: "Explore career paths in SOC, required skills, and strategies for professional growth.",
                 duration: "2h 00min",
                 videoUrl: "",
-                pdfUrl: "",
+                pdfs: [],
                 objectives: [
                     "Understand SOC career paths",
                     "Learn required skills and certifications",
@@ -830,14 +866,16 @@
             }
         ];
 
+        // ── STATE ──────────────────────────────────────────────────────────────
         let currentLessonIndex = null;
-        let pdfOpen = false;
+        let pdfOpen            = false;
+        let activePdfTab       = 0;      // 0 = first PDF, 1 = second PDF
 
         // ── AUTH ──────────────────────────────────────────────────────────────
         function loadUserData() {
             const user = JSON.parse(localStorage.getItem('user') || '{}');
             if (!user.loggedIn) { window.location.href = 'index.html'; return; }
-            document.getElementById('user-name').textContent = user.name || user.email || 'User';
+            document.getElementById('user-name').textContent   = user.name || user.email || 'User';
             document.getElementById('user-avatar').textContent = (user.name || user.email || 'U').substring(0, 2).toUpperCase();
             const saved = JSON.parse(localStorage.getItem('lessonProgress') || '[]');
             saved.forEach(id => { const l = lessons.find(x => x.id === id); if (l) l.completed = true; });
@@ -849,10 +887,12 @@
             container.innerHTML = '';
             lessons.forEach((lesson, index) => {
                 const card = document.createElement('div');
-                card.className = 'lesson-card' + (lesson.completed ? ' completed' : '') + (currentLessonIndex === index ? ' active' : '');
+                card.className = 'lesson-card'
+                    + (lesson.completed        ? ' completed' : '')
+                    + (currentLessonIndex === index ? ' active'    : '');
                 let badge = '';
                 if (currentLessonIndex === index) badge = '<span class="lesson-status-badge current">Current</span>';
-                else if (lesson.completed) badge = '<span class="lesson-status-badge completed">✓ Done</span>';
+                else if (lesson.completed)         badge = '<span class="lesson-status-badge completed">✓ Done</span>';
                 card.innerHTML = `
                     <div class="lesson-card-header">
                         <div class="lesson-number">${String(lesson.id).padStart(2,'0')}</div>
@@ -876,7 +916,7 @@
             document.getElementById('welcome-screen').style.display = 'none';
             document.getElementById('lesson-view').classList.add('active');
 
-            // Video
+            // — Video —
             const vw = document.getElementById('video-wrapper');
             vw.innerHTML = lesson.videoUrl
                 ? `<iframe src="${lesson.videoUrl}" allow="autoplay; encrypted-media" allowfullscreen></iframe>`
@@ -885,27 +925,31 @@
                        <div class="video-placeholder-text">Video coming soon</div>
                    </div>`;
 
-            // PDF — reset to collapsed on each lesson switch
-            pdfOpen = false;
-            const wrapper = document.getElementById('pdf-viewer-wrapper');
-            wrapper.classList.remove('expanded');
+            // — Reset PDF panel state —
+            pdfOpen      = false;
+            activePdfTab = 0;
+
+            const wrapper   = document.getElementById('pdf-viewer-wrapper');
             const toggleBtn = document.getElementById('pdf-toggle-btn');
+            const tabBar    = document.getElementById('pdf-tab-bar');
+            const openLink  = document.getElementById('pdf-open-link');
+            const subtitle  = document.getElementById('pdf-subtitle');
+
+            wrapper.classList.remove('expanded');
             toggleBtn.classList.remove('open');
             toggleBtn.innerHTML = `
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
                 Show PDF`;
 
-            const openLink = document.getElementById('pdf-open-link');
-            const subtitle = document.getElementById('pdf-subtitle');
+            // Filter out entries with empty URLs
+            const validPdfs = (lesson.pdfs || []).filter(p => p.url && p.url.trim() !== '');
 
-            if (lesson.pdfUrl) {
-                subtitle.textContent = `Lesson ${lesson.id} — Reading Material`;
-                // Convert /preview to /view for the "open in new tab" link
-                openLink.href = lesson.pdfUrl.replace('/preview', '/view');
-                openLink.style.display = 'flex';
-                wrapper.innerHTML = `<iframe src="${lesson.pdfUrl}" allowfullscreen></iframe>`;
-            } else {
-                subtitle.textContent = 'No PDF available for this lesson yet';
+            if (validPdfs.length === 0) {
+                // No PDFs available
+                subtitle.textContent  = 'No PDF available for this lesson yet';
+                tabBar.style.display  = 'none';
                 openLink.style.display = 'none';
                 wrapper.innerHTML = `
                     <div class="pdf-no-content">
@@ -917,13 +961,28 @@
                         </svg>
                         <p>PDF reading material coming soon for this lesson.</p>
                     </div>`;
+            } else {
+                // ≥ 1 valid PDF
+                subtitle.textContent = `Lesson ${lesson.id} — Reading Material`;
+
+                // Show tab bar only when 2 PDFs
+                if (validPdfs.length >= 2) {
+                    tabBar.style.display = 'flex';
+                    document.getElementById('pdf-tab-0').textContent = `📄 ${validPdfs[0].label || 'PDF 1'}`;
+                    document.getElementById('pdf-tab-1').textContent = `📄 ${validPdfs[1].label || 'PDF 2'}`;
+                } else {
+                    tabBar.style.display = 'none';
+                }
+
+                // Render active tab's iframe
+                renderPdfTab(validPdfs, 0, openLink);
             }
 
-            // Details
-            document.getElementById('lesson-title').textContent = lesson.title;
+            // — Lesson details —
+            document.getElementById('lesson-title').textContent       = lesson.title;
             document.getElementById('lesson-description').textContent = lesson.description;
-            document.getElementById('lesson-duration').textContent = lesson.duration;
-            document.getElementById('lesson-number').textContent = `Lesson ${lesson.id}`;
+            document.getElementById('lesson-duration').textContent    = lesson.duration;
+            document.getElementById('lesson-number').textContent      = `Lesson ${lesson.id}`;
 
             document.getElementById('objectives-list').innerHTML = lesson.objectives.map(obj => `
                 <li>
@@ -933,35 +992,82 @@
                     <span class="objective-text">${obj}</span>
                 </li>`).join('');
 
-            document.getElementById('complete-checkbox').checked = lesson.completed;
-            document.getElementById('prev-btn').disabled = index === 0;
-            document.getElementById('next-btn').disabled = index === lessons.length - 1;
+            document.getElementById('complete-checkbox').checked  = lesson.completed;
+            document.getElementById('prev-btn').disabled          = index === 0;
+            document.getElementById('next-btn').disabled          = index === lessons.length - 1;
 
             renderLessons();
         }
 
-        // ── PDF TOGGLE ────────────────────────────────────────────────────────
+        // ── RENDER ACTIVE PDF TAB ─────────────────────────────────────────────
+        function renderPdfTab(validPdfs, tabIndex, openLinkEl) {
+            const openLink = openLinkEl || document.getElementById('pdf-open-link');
+            const wrapper  = document.getElementById('pdf-viewer-wrapper');
+            const pdf      = validPdfs[tabIndex];
+
+            // Highlight the correct tab button
+            document.getElementById('pdf-tab-0').classList.toggle('active', tabIndex === 0);
+            document.getElementById('pdf-tab-1').classList.toggle('active', tabIndex === 1);
+
+            // Update "open in new tab" link
+            openLink.href          = pdf.url.replace('/preview', '/view');
+            openLink.style.display = 'flex';
+
+            // Inject iframe (keep expanded state)
+            wrapper.innerHTML = `<iframe src="${pdf.url}" allowfullscreen></iframe>`;
+        }
+
+        // ── SWITCH PDF TAB ─────────────────────────────────────────────────────
+        function switchPdfTab(tabIndex) {
+            if (currentLessonIndex === null) return;
+            const lesson    = lessons[currentLessonIndex];
+            const validPdfs = (lesson.pdfs || []).filter(p => p.url && p.url.trim() !== '');
+            if (tabIndex >= validPdfs.length) return;
+
+            activePdfTab = tabIndex;
+            renderPdfTab(validPdfs, tabIndex);
+
+            // If PDF panel is closed, open it automatically when user taps a tab
+            if (!pdfOpen) {
+                pdfOpen = true;
+                const wrapper   = document.getElementById('pdf-viewer-wrapper');
+                const toggleBtn = document.getElementById('pdf-toggle-btn');
+                wrapper.classList.add('expanded');
+                toggleBtn.classList.add('open');
+                toggleBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="18 15 12 9 6 15"/>
+                    </svg>
+                    Hide PDF`;
+            }
+        }
+
+        // ── TOGGLE PDF PANEL ──────────────────────────────────────────────────
         function togglePdf() {
             pdfOpen = !pdfOpen;
-            const wrapper = document.getElementById('pdf-viewer-wrapper');
-            const btn = document.getElementById('pdf-toggle-btn');
+            const wrapper   = document.getElementById('pdf-viewer-wrapper');
+            const toggleBtn = document.getElementById('pdf-toggle-btn');
 
             if (pdfOpen) {
                 wrapper.classList.add('expanded');
-                btn.classList.add('open');
-                btn.innerHTML = `
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                toggleBtn.classList.add('open');
+                toggleBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="18 15 12 9 6 15"/>
+                    </svg>
                     Hide PDF`;
             } else {
                 wrapper.classList.remove('expanded');
-                btn.classList.remove('open');
-                btn.innerHTML = `
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                toggleBtn.classList.remove('open');
+                toggleBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
                     Show PDF`;
             }
         }
 
-        // ── PROGRESS / NAV ────────────────────────────────────────────────────
+        // ── PROGRESS / NAVIGATION ─────────────────────────────────────────────
         function toggleComplete() {
             if (currentLessonIndex === null) return;
             lessons[currentLessonIndex].completed = document.getElementById('complete-checkbox').checked;
@@ -969,17 +1075,17 @@
             renderLessons();
         }
 
-        function previousLesson() { if (currentLessonIndex > 0) loadLesson(currentLessonIndex - 1); }
-        function nextLesson() { if (currentLessonIndex < lessons.length - 1) loadLesson(currentLessonIndex + 1); }
+        function previousLesson() { if (currentLessonIndex > 0)                   loadLesson(currentLessonIndex - 1); }
+        function nextLesson()     { if (currentLessonIndex < lessons.length - 1)  loadLesson(currentLessonIndex + 1); }
 
         function updateProgress() {
             const completed = lessons.filter(l => l.completed).length;
-            const pct = Math.round((completed / lessons.length) * 100);
-            document.getElementById('progress-text').textContent = `${pct}%`;
-            document.getElementById('ring-progress').textContent = `${pct}%`;
-            document.getElementById('progress-bar').style.width = `${pct}%`;
-            document.getElementById('completed-stat').textContent = completed;
-            document.getElementById('remaining-stat').textContent = lessons.length - completed;
+            const pct       = Math.round((completed / lessons.length) * 100);
+            document.getElementById('progress-text').textContent   = `${pct}%`;
+            document.getElementById('ring-progress').textContent   = `${pct}%`;
+            document.getElementById('progress-bar').style.width    = `${pct}%`;
+            document.getElementById('completed-stat').textContent  = completed;
+            document.getElementById('remaining-stat').textContent  = lessons.length - completed;
             document.getElementById('progress-ring-circle').style.strokeDashoffset = 125.6 - (pct / 100) * 125.6;
         }
 

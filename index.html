@@ -588,7 +588,7 @@
             <div class="login-footer">
                 <div class="security-badge">
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l7-3.11v8.8z"/>
                     </svg>
                     <span>256-bit SSL Encrypted</span>
                 </div>
@@ -605,6 +605,9 @@
             'OLAWALE-20',
             'OLAWALE20',  // Allow without hyphen too
         ];
+
+        // Always clear any existing session when the login page loads
+        localStorage.removeItem('user');
 
         function showAlert(message, type) {
             const container = document.getElementById('alert-container');
@@ -655,12 +658,11 @@
                 if (validAccessCodes.includes(accessCode)) {
                     showAlert('Access granted! Redirecting...', 'success');
                     
-                    // Store authentication
+                    // Store session info (no loggedIn flag — login is required every time)
                     const user = {
                         email: accessCode + '@xecuredly.com',
                         name: accessCode.split('-')[0],
                         accessCode: accessCode,
-                        loggedIn: true,
                         loginTime: new Date().toISOString()
                     };
                     localStorage.setItem('user', JSON.stringify(user));
@@ -697,17 +699,6 @@
             }
             
             e.target.value = value;
-        });
-
-        // Check if already logged in
-        window.addEventListener('load', () => {
-            const user = JSON.parse(localStorage.getItem('user') || '{}');
-            if (user.loggedIn) {
-                showAlert('Already logged in. Redirecting...', 'success');
-                setTimeout(() => {
-                    window.location.href = 'dashboard.html';
-                }, 1000);
-            }
         });
 
         // Allow Enter key to submit

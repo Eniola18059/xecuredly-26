@@ -658,11 +658,12 @@
                 if (validAccessCodes.includes(accessCode)) {
                     showAlert('Access granted! Redirecting...', 'success');
                     
-                    // Store session info (no loggedIn flag — login is required every time)
+                    // Store session info
                     const user = {
                         email: accessCode + '@xecuredly.com',
                         name: accessCode.split('-')[0],
                         accessCode: accessCode,
+                        loggedIn: true,
                         loginTime: new Date().toISOString()
                     };
                     localStorage.setItem('user', JSON.stringify(user));

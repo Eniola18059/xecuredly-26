@@ -45,7 +45,7 @@
         .logout-btn { padding: 0.5rem 1rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); color: var(--text-secondary); font-family: 'Outfit', sans-serif; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all var(--transition-normal); }
         .logout-btn:hover { background: var(--danger); border-color: var(--danger); color: white; transform: translateY(-1px); }
         .main-container { max-width: 1800px; margin: 0 auto; padding: 2rem; display: grid; grid-template-columns: 380px 1fr; gap: 2rem; position: relative; z-index: 1; }
-        .sidebar { height: calc(100vh - 120px); position: sticky; top: 100px; display: flex; flex-direction: column; gap: 1.5rem; }
+        .sidebar { height: calc(100vh - 96px); position: sticky; top: 88px; display: flex; flex-direction: column; gap: 1.25rem; }
         .course-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-md); }
         .course-header { margin-bottom: 1.5rem; }
         .course-title { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary); }
@@ -59,11 +59,16 @@
         .progress-bar { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 999px; transition: width 0.6s cubic-bezier(0.4,0,0.2,1); position: relative; }
         .progress-bar::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shimmer 2s infinite; }
         @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-        .lessons-container { flex: 1; overflow-y: auto; padding-right: 0.5rem; }
-        .lessons-container::-webkit-scrollbar { width: 6px; }
+        .lessons-container { flex: 1; overflow-y: auto; padding-right: 0.5rem; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--primary) var(--bg-elevated); -webkit-overflow-scrolling: touch; }
+        .lessons-container::-webkit-scrollbar { width: 8px; }
         .lessons-container::-webkit-scrollbar-track { background: var(--bg-elevated); border-radius: 999px; }
         .lessons-container::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 999px; }
-        .lesson-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 0.75rem; cursor: pointer; transition: all var(--transition-normal); position: relative; overflow: hidden; }
+        .lessons-container::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
+        .scroll-hint { display: none; align-items: center; justify-content: center; gap: 0.375rem; padding: 0.5rem; margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-muted); border-top: 1px solid var(--border-light); }
+        .scroll-hint.visible { display: flex; }
+        .scroll-hint svg { width: 14px; height: 14px; animation: bounce-down 1.4s ease-in-out infinite; }
+        @keyframes bounce-down { 0%,100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+        .lesson-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 0.75rem 0.875rem; margin-bottom: 0.625rem; cursor: pointer; transition: all var(--transition-normal); position: relative; overflow: hidden; }
         .lesson-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: transparent; transition: all var(--transition-normal); }
         .lesson-card:hover { background: var(--bg-card); border-color: var(--primary); transform: translateX(4px); }
         .lesson-card:hover::before { background: linear-gradient(180deg, var(--primary), var(--secondary)); }
@@ -157,7 +162,52 @@
         .completion-toggle input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; accent-color: var(--success); }
         .completion-toggle label { font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); cursor: pointer; }
         @media (max-width: 1200px) { .main-container { grid-template-columns: 320px 1fr; gap: 1.5rem; } }
-        @media (max-width: 968px) { .main-container { grid-template-columns: 1fr; padding: 1rem; } .sidebar { height: auto; position: static; } .stats-grid { grid-template-columns: 1fr; } .action-bar { flex-direction: column; } .nav-controls { width: 100%; } .btn { flex: 1; } .brand-tagline { display: none; } .pdf-viewer-wrapper.expanded { height: 500px; } }
+        @media (max-width: 968px) {
+            .main-container { grid-template-columns: 1fr; padding: 1rem; gap: 1.25rem; }
+            .sidebar { height: auto; position: static; gap: 1rem; }
+            .lessons-container { max-height: 420px; overscroll-behavior: contain; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .action-bar { flex-direction: column; align-items: stretch; }
+            .nav-controls { width: 100%; }
+            .btn { flex: 1; justify-content: center; }
+            .completion-toggle { justify-content: center; }
+            .brand-tagline { display: none; }
+            .pdf-viewer-wrapper.expanded { height: 500px; }
+        }
+        @media (max-width: 640px) {
+            .header { padding: 0.875rem 1rem; }
+            .header-content { flex-wrap: wrap; gap: 0.75rem; }
+            .user-section { gap: 0.75rem; width: 100%; justify-content: space-between; }
+            .user-name { display: none; }
+            .user-info { padding: 0.375rem; }
+            .main-container { padding: 0.875rem; gap: 1rem; }
+            .lessons-container { max-height: 320px; }
+            .welcome-card { padding: 1.75rem 1.25rem; }
+            .welcome-icon-wrapper { width: 88px; height: 88px; margin-bottom: 1.25rem; }
+            .welcome-icon-wrapper svg { width: 44px; height: 44px; }
+            .welcome-title { font-size: 1.375rem; }
+            .welcome-description { font-size: 1rem; margin-bottom: 1.75rem; }
+            .stat-value { font-size: 1.875rem; }
+            .pdf-card-header { padding: 0.875rem 1rem; }
+            .pdf-header-title { font-size: 0.9375rem; }
+            .pdf-header-actions { width: 100%; justify-content: flex-start; }
+            .pdf-viewer-wrapper.expanded { height: 380px; }
+            .lesson-details-card { padding: 1.25rem; }
+            .lesson-title-main { font-size: 1.25rem; }
+            .lesson-meta-tags { gap: 0.5rem; }
+            .meta-tag { padding: 0.375rem 0.75rem; font-size: 0.8125rem; }
+            .section-title { font-size: 1rem; }
+            .course-title { font-size: 1rem; }
+        }
+        @media (max-width: 420px) {
+            .brand-name { font-size: 1.0625rem; }
+            .progress-ring { width: 40px; height: 40px; }
+            .progress-ring svg { width: 40px; height: 40px; }
+            .stats-grid { gap: 0.75rem; }
+            .stat-card { padding: 1rem; }
+            .lesson-card { padding: 0.625rem 0.75rem; }
+            .lesson-title { font-size: 0.875rem; }
+        }
     </style>
 </head>
 <body>
@@ -206,8 +256,9 @@
                     <div class="progress-bar-wrapper"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
                 </div>
             </div>
-            <div class="course-card" style="flex:1;min-height:0;">
+            <div class="course-card" style="flex:1;min-height:0;display:flex;flex-direction:column;padding:1rem;">
                 <div class="lessons-container" id="lessons-container"></div>
+                <div class="scroll-hint" id="scroll-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>More lessons below</div>
             </div>
         </aside>
 
@@ -336,6 +387,16 @@
                 container.appendChild(card);
             });
             updateProgress();
+            checkScrollHint();
+        }
+
+        function checkScrollHint() {
+            const container = document.getElementById('lessons-container');
+            const hint = document.getElementById('scroll-hint');
+            if (!container || !hint) return;
+            const isScrollable = container.scrollHeight > container.clientHeight + 4;
+            const atBottom = container.scrollTop + container.clientHeight >= container.scrollHeight - 4;
+            hint.classList.toggle('visible', isScrollable && !atBottom);
         }
 
         function loadLesson(index) {
@@ -443,6 +504,8 @@
 
         loadUserData();
         renderLessons();
+        document.getElementById('lessons-container').addEventListener('scroll', checkScrollHint);
+        window.addEventListener('resize', checkScrollHint);
     </script>
 </body>
 </html>
